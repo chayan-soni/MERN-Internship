@@ -52,7 +52,7 @@ const App = () => {
     const fetchProducts = async () => {
       try {
         const data = await apiClient.get('/products');
-        setProducts(data);
+        setProducts(data.products || data);
       } catch (error) {
         showToast(error.message, 'error');
       } finally {
@@ -197,7 +197,7 @@ const App = () => {
 
   const refreshProducts = async () => {
     const data = await apiClient.get('/products');
-    setProducts(data);
+    setProducts(data.products || data);
   };
 
   const fetchReviewsForProduct = async (productId) => {
